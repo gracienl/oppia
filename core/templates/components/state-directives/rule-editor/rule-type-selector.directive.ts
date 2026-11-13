@@ -79,8 +79,10 @@ export class RuleTypeSelector implements OnInit {
     let equalToIndex = null;
     let idx = 0;
     for (let ruleType in ruleTypesToDescriptions) {
+      // Prefer exact ordering over the one-item-incorrect ordering rule.
       if (
         !this.isRuleTypeDisabled(ruleType) &&
+        ruleType !== 'IsEqualToOrderingWithOneItemAtIncorrectPosition' &&
         (ruleType.includes('Equal') || ruleType.includes('Exactly'))
       ) {
         equalToIndex = idx;
